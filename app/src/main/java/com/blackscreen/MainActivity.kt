@@ -2,9 +2,7 @@ package com.blackscreen
 
 import android.Manifest
 import android.app.Activity
-import android.app.admin.DevicePolicyManager
 import android.content.BroadcastReceiver
-import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
@@ -23,9 +21,6 @@ import androidx.core.content.ContextCompat
 class MainActivity : Activity() {
 
     private lateinit var gestureDetector: GestureDetector
-    private lateinit var devicePolicyManager: DevicePolicyManager
-    private lateinit var adminComponent: ComponentName
-
     private val screenOffReceiver = object : BroadcastReceiver() {
         override fun onReceive(context: Context?, intent: Intent?) {
             if (intent?.action == Intent.ACTION_SCREEN_OFF) {
@@ -36,9 +31,6 @@ class MainActivity : Activity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        devicePolicyManager = getSystemService(Context.DEVICE_POLICY_SERVICE) as DevicePolicyManager
-        adminComponent = ComponentName(this, AdminReceiver::class.java)
 
         // Set black background
         val view = View(this)
@@ -69,14 +61,6 @@ class MainActivity : Activity() {
 
         // Request permissions and start service
         checkPermissionsAndStartService()
-        
-        // Request Device Admin if not active
-        if (!devicePolicyManager.isAdminActive(adminComponent)) {
-            val intent = Intent(DevicePolicyManager.ACTION_ADD_DEVICE_ADMIN)
-            intent.putExtra(DevicePolicyManager.EXTRA_DEVICE_ADMIN, adminComponent)
-            intent.putExtra(DevicePolicyManager.EXTRA_ADD_EXPLANATION, getString(R.string.device_admin_description))
-            startActivity(intent)
-        }
     }
 
     private fun hideSystemUI() {
@@ -119,9 +103,6 @@ class MainActivity : Activity() {
     }
 
     private fun exitApp() {
-        if (devicePolicyManager.isAdminActive(adminComponent)) {
-            devicePolicyManager.lockNow()
-        }
         stopService(Intent(this, BlackScreenService::class.java))
         finishAndRemoveTask()
     }
