@@ -2,4 +2,6 @@
     <string name="app_name">BlackScreen</string>
     <string name="notification_channel_name">BlackScreen Status</string>
     <string name="notification_text">BlackScreen is active. Double tap to exit.</string>
+    <string name="device_admin_label">BlackScreen Admin</string>
+    <string name="device_admin_description">Used to lock the screen when the app is closed.</string>
 </resources>

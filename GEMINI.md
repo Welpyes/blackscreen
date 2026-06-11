@@ -7,6 +7,7 @@ BlackScreen is an ultra-lightweight Android application designed to display a fu
 - **Full-Screen Black Overlay:** Hides all system UI (status bar, navigation bar).
 - **Keep Screen On:** Prevents the device from sleeping while the app is active.
 - **Double-Tap to Exit:** Simple gesture to close the app and return to the system.
+- **Lock Screen on Exit:** Automatically locks the device's screen when the app is closed (requires Device Administrator permission).
 - **Auto-Exit on Sleep:** Automatically kills itself when the power button is pressed to avoid confusion.
 - **Persistent Notification:** Uses a Foreground Service to prevent the system from reclaiming resources.
 - **Ultra-Lightweight:** Optimized for size (< 1MB expected after R8).
