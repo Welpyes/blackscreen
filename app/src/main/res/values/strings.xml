@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BlackScreen</string>
+    <string name="notification_channel_name">BlackScreen Status</string>
+    <string name="notification_text">BlackScreen is active. Double tap to exit.</string>
+</resources>
