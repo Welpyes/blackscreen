@@ -19,19 +19,21 @@ BlackScreen is an ultra-lightweight Android application designed to display a fu
 
 ## Building and Running
 
-The project uses Gradle. To build a release APK:
+The project uses Gradle. To build a **Debug APK** (recommended for testing as it is automatically signed):
+
+```bash
+./gradlew assembleDebug
+```
+
+The APK will be located at `app/build/outputs/apk/debug/app-debug.apk`.
+
+To build a **Release APK**:
 
 ```bash
 ./gradlew assembleRelease
 ```
 
-The APK will be located at `app/build/outputs/apk/release/app-release-unsigned.apk`.
-
-To build a debug APK:
-
-```bash
-./gradlew assembleDebug
-```
+The APK will be located at `app/build/outputs/apk/release/app-release-unsigned.apk`. **Note:** Release builds must be signed manually before they can be installed on a device.
 
 ## Optimization
 
